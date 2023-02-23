@@ -9,6 +9,7 @@ public class EnemyCtrl : HaoMonoBehaviour
     [SerializeField] protected EnemyHealth enemyHealth;
     [SerializeField] protected EnemyShield enemyShield;
 
+    public EnemyDespawn Enemy_Despawn { get => enemyDespawn; }
     public EnemyHealth Enemy_Health { get => enemyHealth; }
     public EnemyShield Enemy_Shield { get => enemyShield; }
 

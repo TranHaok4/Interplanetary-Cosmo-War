@@ -68,9 +68,23 @@ public abstract class Spawner : HaoMonoBehaviour
                 return poolObj;
             }
         }
-        Transform newPrefab = Instantiate(prefab);
-        newPrefab.name = prefab.name;
-        return newPrefab;
+        return GetObjectbyName(prefab);
+    }
+    protected virtual Transform GetObjectbyName(Transform prefab)
+    {
+        Transform new_prefab;
+        foreach (Transform obj in prefabs)
+        {
+            if(obj.name==prefab.name)
+            {
+                new_prefab = Instantiate(obj);
+                new_prefab.name = prefab.name;
+                return new_prefab;
+            }
+        }
+        new_prefab = Instantiate(prefab);
+        new_prefab.name = prefab.name;
+        return new_prefab;
     }
 
     public virtual void Despawn(Transform obj)

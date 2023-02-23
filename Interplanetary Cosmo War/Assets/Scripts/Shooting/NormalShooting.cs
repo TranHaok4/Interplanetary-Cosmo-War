@@ -6,7 +6,6 @@ public class NormalShooting :ShootingStrategy
 {
     public override  void  Shoot(Transform bulletPrefab, GunPosition gunPos, Transform shooterTransform, TypeShootSO typeshoot)
     {
-        Debug.Log("haha");
         for (int index = 0; index < gunPos.GetSizePos(); index++)
         {
             Vector3 spawnpos = gunPos.GetPos(index).transform.position;

@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3725321783801137382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2200715316135116426}
+  - component: {fileID: 6606150775386323805}
+  m_Layer: 0
+  m_Name: EnemyPathing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2200715316135116426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3725321783801137382}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3856907659224050838}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6606150775386323805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3725321783801137382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2718dd1f008d4ec4da85da3925a7bef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveConfig: {fileID: 0}
+  waypoint: []
 --- !u!1 &3856907658070259682
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +333,7 @@ Transform:
   - {fileID: 3856907658542602247}
   - {fileID: 3856907659719903620}
   - {fileID: 3856907659353290295}
+  - {fileID: 2200715316135116426}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -351,7 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af244135b6f67746a85b0afe995d4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet_Prefab: {fileID: 0}
+  bullet_Prefab: {fileID: 3609557444149347663, guid: 30eb7ae67adf75e4ba04bfca4759d1d7, type: 3}
   shootDelay: 3
   shootTimer: 0
   gunPos: {fileID: 3856907658070259684}

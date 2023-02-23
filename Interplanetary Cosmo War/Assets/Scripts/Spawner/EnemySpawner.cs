@@ -5,24 +5,38 @@ using UnityEngine;
 
 public class EnemySpawner : Spawner
 {
-    [SerializeField] List<WaveConfigSO> waveConfigs;
+    [SerializeField] List<StageConfigSO> stageConfigs;
 
-    int wave_index = 0;
+    int stage_index = 0;
 
 
     protected override void Start()
     {
         base.Start();
-        wave_index = 0;
-        StartCoroutine(Spawn_AllWaves());
+        stage_index = 0;
+        StartCoroutine(Spawn_AllStage());
+    }
+
+    private IEnumerator Spawn_AllStage()
+    {
+        while(stage_index<stageConfigs.Count)
+        {
+            var current_Stage = stageConfigs[stage_index];
+
+            yield return StartCoroutine(Spawn_AllWaves(current_Stage));
+
+            yield return new WaitForSeconds(stageConfigs[stage_index].TimeBetweenStage);
+            stage_index++;
+        }    
     }
 
     
-    private IEnumerator Spawn_AllWaves()
+    private IEnumerator Spawn_AllWaves(StageConfigSO stageconfig)
     {
-        while(wave_index<waveConfigs.Count)
+        int wave_index = 0;
+        while (wave_index<stageconfig.WaveConfigs.Count)
         {
-            var current_Wave = waveConfigs[wave_index];
+            var current_Wave = stageconfig.WaveConfigs[wave_index];
             yield return StartCoroutine(Spawn_All_EnemiesInWave(current_Wave));
             wave_index++;
         }
