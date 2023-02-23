@@ -25,4 +25,8 @@ public class GunPosition : HaoMonoBehaviour
     {
         return gunpos[index];
     }
+    public virtual int GetSizePos()
+    {
+        return gunpos.Count;
+    }
 }

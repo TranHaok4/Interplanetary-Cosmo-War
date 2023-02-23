@@ -34,7 +34,7 @@ public class BulletImpart : BulletAbstract
 
     protected void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.parent == transform.parent) return; 
+        if (other.transform.parent == this.bulletCtrl.Shooter) return; 
         this.Bullet_Ctrl.Bullet_DamageSender.Send(other.transform);
     }
 }

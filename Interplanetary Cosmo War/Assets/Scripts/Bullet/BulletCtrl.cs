@@ -9,6 +9,9 @@ public class BulletCtrl : HaoMonoBehaviour
 
     [SerializeField] protected BulletDamageSender bulletDamageSender;
     public BulletDamageSender Bullet_DamageSender { get => bulletDamageSender; }
+
+    [SerializeField] protected Transform shooter;
+    public Transform Shooter { get => shooter; }
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -30,4 +33,8 @@ public class BulletCtrl : HaoMonoBehaviour
         Debug.Log(transform.name + ":BulletDamageSender");
     }
 
+    public virtual void SetShooter(Transform shooter)
+    {
+        this.shooter = shooter;
+    }
 }

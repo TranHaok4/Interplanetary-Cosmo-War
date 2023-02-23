@@ -51,7 +51,6 @@ public abstract class Spawner : HaoMonoBehaviour
         Transform new_prefab = this.GetObjectFromPool(prefab);
         new_prefab.SetPositionAndRotation(spawnpos, rotation);
         new_prefab.parent = this.holder;
-
         return new_prefab;
     }
 

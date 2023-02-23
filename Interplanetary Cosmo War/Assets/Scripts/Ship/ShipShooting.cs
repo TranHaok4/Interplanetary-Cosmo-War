@@ -42,11 +42,10 @@ public class ShipShooting : HaoMonoBehaviour
 
         Vector3 spawnpos = this.gunPos.GetPos(0).transform.position;
         Quaternion this_rotation = this.gunPos.GetPos(0).transform.rotation;
-        bullet_Prefab =BulletSpawner.Instance.GetPrefab();
 
         Transform new_bullet = BulletSpawner.Instance.Spawn(bullet_Prefab, spawnpos, this_rotation);
         new_bullet.gameObject.SetActive(true);
-        
-
+        BulletCtrl bulletCtrl = new_bullet.GetComponent<BulletCtrl>();
+        bulletCtrl.SetShooter(transform.parent);
     }
 }
