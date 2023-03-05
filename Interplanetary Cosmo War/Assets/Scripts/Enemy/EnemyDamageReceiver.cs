@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class EnemyDamageReceiver : DamageReceiver
+public class EnemyDamageReceiver : DamageReceiver   
 {
     [Header("EnemyDamageReceiver")]
     [SerializeField] protected BoxCollider2D boxcollider;
@@ -32,7 +32,7 @@ public class EnemyDamageReceiver : DamageReceiver
     }
     protected override void Ondead()
     {
-
+        
     }
     public override void Add(int value)
     {

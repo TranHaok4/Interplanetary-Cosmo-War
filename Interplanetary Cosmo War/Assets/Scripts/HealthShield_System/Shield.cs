@@ -21,7 +21,7 @@ public abstract class Shield : HaoMonoBehaviour
     protected virtual void LoadModel()
     {
         if (model != null) return;
-        model = transform.parent.Find("Model");
+        model = transform.Find("Model");
         Debug.Log(transform.name + ":LoadModel");
     }
 
