@@ -46,7 +46,7 @@ public abstract class Spawner : HaoMonoBehaviour
         }    
     }
 
-    public virtual Transform Spawn(Transform prefab,Vector2 spawnpos,Quaternion rotation)
+    public virtual Transform Spawn(string prefab,Vector2 spawnpos,Quaternion rotation)
     {
         Transform new_prefab = this.GetObjectFromPool(prefab);
         new_prefab.SetPositionAndRotation(spawnpos, rotation);
@@ -54,37 +54,31 @@ public abstract class Spawner : HaoMonoBehaviour
         return new_prefab;
     }
 
-    public virtual Transform GetPrefab()
-    {
-        return prefabs[0];
-    }
-    protected virtual Transform GetObjectFromPool(Transform prefab)
+    protected virtual Transform GetObjectFromPool(string prefab_name)
     {
         foreach(Transform poolObj in poolObjs)
         {
-            if (poolObj.name == prefab.name)
+            if (poolObj.name == prefab_name)
             {
                 this.poolObjs.Remove(poolObj);
                 return poolObj;
             }
         }
-        return GetObjectbyName(prefab);
+        return GetObjectbyName(prefab_name);
     }
-    protected virtual Transform GetObjectbyName(Transform prefab)
+    protected virtual Transform GetObjectbyName(string prefab_name)
     {
         Transform new_prefab;
         foreach (Transform obj in prefabs)
         {
-            if(obj.name==prefab.name)
+            if(obj.name==prefab_name)
             {
                 new_prefab = Instantiate(obj);
-                new_prefab.name = prefab.name;
+                new_prefab.name = prefab_name;
                 return new_prefab;
             }
         }
-        new_prefab = Instantiate(prefab);
-        new_prefab.name = prefab.name;
-        return new_prefab;
+        return null;
     }
 
     public virtual void Despawn(Transform obj)

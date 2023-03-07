@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class WaveConfigSO : ScriptableObject
 {
-    [SerializeField] Transform enemy_prefabs;
-    public Transform Enemy_Prefabs { get => enemy_prefabs; }
+    [SerializeField] EnemyEnum enemy_prefabs;
+    public string Enemy_Prefabs { get => enemy_prefabs.ToString(); }
 
     [SerializeField] Transform path_prefab;
     public Transform Path_Prefab { get => path_prefab; }

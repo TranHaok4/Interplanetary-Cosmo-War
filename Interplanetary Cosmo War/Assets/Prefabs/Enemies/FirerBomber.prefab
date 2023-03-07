@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 4780097346681043636}
   - component: {fileID: 4780097346681043635}
   m_Layer: 0
-  m_Name: Firer Bomber
+  m_Name: FirerBomber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ShipShooting : HaoMonoBehaviour
 {
-    [SerializeField] protected Transform bullet_Prefab;
+    [SerializeField] protected PlayerBulletEnum bullet_Prefab;
 
     [SerializeField] protected float shootDelay = 0.2f;
     [SerializeField] protected float shootTimer = 0f;
@@ -43,7 +43,7 @@ public class ShipShooting : HaoMonoBehaviour
         Vector3 spawnpos = this.gunPos.GetPos(0).transform.position;
         Quaternion this_rotation = this.gunPos.GetPos(0).transform.rotation;
 
-        Transform new_bullet = BulletSpawner.Instance.Spawn(bullet_Prefab, spawnpos, this_rotation);
+        Transform new_bullet = BulletSpawner.Instance.Spawn(bullet_Prefab.ToString(), spawnpos, this_rotation);
         new_bullet.gameObject.SetActive(true);
         BulletCtrl bulletCtrl = new_bullet.GetComponent<BulletCtrl>();
         bulletCtrl.SetShooter(transform.parent);

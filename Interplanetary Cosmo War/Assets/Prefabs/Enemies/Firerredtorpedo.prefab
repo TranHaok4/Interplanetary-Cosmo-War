@@ -637,7 +637,7 @@ GameObject:
   - component: {fileID: 6979892674143212856}
   - component: {fileID: 6979892674143212859}
   m_Layer: 0
-  m_Name: Firer red torpedo
+  m_Name: Firerredtorpedo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

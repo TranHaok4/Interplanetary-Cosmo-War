@@ -7,13 +7,13 @@ public class BurstShooting : ShootingStrategy
 {
     [SerializeField] private float delayBurst = 0.05f;
 
-    public override void Shoot(Transform bulletPrefab, GunPosition gunPos, Transform shooterTransform, TypeShootSO typeshoot)
+    public override void Shoot(string bulletPrefabName, GunPosition gunPos, Transform shooterTransform, TypeShootSO typeshoot)
     {
         BurstShootingSO new_typeshoot = (BurstShootingSO)typeshoot;
-        StartCoroutine(BurstCoroutine(bulletPrefab, gunPos, shooterTransform, new_typeshoot));
+        StartCoroutine(BurstCoroutine(bulletPrefabName, gunPos, shooterTransform, new_typeshoot));
     }
 
-    IEnumerator BurstCoroutine(Transform bulletPrefab, GunPosition gunPos, Transform shooterTransform, BurstShootingSO typeshoot)
+    IEnumerator BurstCoroutine(string bulletPrefabName, GunPosition gunPos, Transform shooterTransform, BurstShootingSO typeshoot)
     {
         int numBurst = typeshoot.Number_BurstBullet;
 
@@ -28,7 +28,7 @@ public class BurstShooting : ShootingStrategy
                 Vector3 spawnpos = gunPos.GetPos(i).transform.position;
                 Quaternion this_rotation = gunPos.GetPos(i).transform.rotation;
 
-                Transform new_bullet = EnemyBulletSpawner.Instance.Spawn(bulletPrefab, spawnpos, this_rotation);
+                Transform new_bullet = EnemyBulletSpawner.Instance.Spawn(bulletPrefabName, spawnpos, this_rotation);
 
                 BulletCtrl bulletCtrl = new_bullet.GetComponent<BulletCtrl>();
                 bulletCtrl.SetShooter(shooterTransform);

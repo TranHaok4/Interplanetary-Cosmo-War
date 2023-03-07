@@ -9,6 +9,8 @@ public class BulletImpart : BulletAbstract
     [Header("BulletImpart")]
     [SerializeField] protected BoxCollider2D boxCollider;
     [SerializeField] protected Rigidbody2D _rigibody;
+    [SerializeField] protected VFXImpactEnum vfximpactName;
+    
 
     protected override void LoadComponents()
     {
@@ -35,6 +37,18 @@ public class BulletImpart : BulletAbstract
     protected void OnTriggerEnter2D(Collider2D other)
     {
         if (other.transform.parent.gameObject.name == this.bulletCtrl.Shooter.name) return; 
+
         this.Bullet_Ctrl.Bullet_DamageSender.Send(other.transform);
+        CreateImpactFX(other);
+
+    }
+
+    protected virtual void CreateImpactFX(Collider2D other)
+    {
+        Vector2 hitPos = transform.position;
+        Quaternion hitRot = transform.rotation;
+        Transform fxImpact= FXSpawner.Instance.Spawn(vfximpactName.ToString(), hitPos, hitRot);
+        fxImpact.gameObject.SetActive(true);
+
     }
 }

@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 3856907659224050838}
   - component: {fileID: 3856907659224050839}
   m_Layer: 0
-  m_Name: Firer Scout
+  m_Name: FirerScout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

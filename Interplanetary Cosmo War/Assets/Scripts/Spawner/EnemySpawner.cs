@@ -7,6 +7,7 @@ public class EnemySpawner : Spawner
 {
     [SerializeField] List<StageConfigSO> stageConfigs;
 
+
     int stage_index = 0;
 
 
