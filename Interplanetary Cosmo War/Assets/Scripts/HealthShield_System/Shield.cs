@@ -24,6 +24,14 @@ public abstract class Shield : HaoMonoBehaviour
         model = transform.Find("Model");
         Debug.Log(transform.name + ":LoadModel");
     }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        if(Is_ShieldActive)
+        {
+            model.gameObject.SetActive(true);
+        }
+    }
 
     public virtual void Add(int value)
     {

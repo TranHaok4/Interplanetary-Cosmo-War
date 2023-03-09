@@ -36,7 +36,8 @@ public class BulletImpart : BulletAbstract
 
     protected void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.parent.gameObject.name == this.bulletCtrl.Shooter.name) return; 
+        if (other.transform.parent.gameObject.name == this.bulletCtrl.Shooter.name) return;
+        if (other.GetComponent<DamageReceiver>() == null) return;
 
         this.Bullet_Ctrl.Bullet_DamageSender.Send(other.transform);
         CreateImpactFX(other);

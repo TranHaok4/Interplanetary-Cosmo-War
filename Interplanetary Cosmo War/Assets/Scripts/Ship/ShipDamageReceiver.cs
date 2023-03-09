@@ -33,16 +33,16 @@ public class ShipDamageReceiver : DamageReceiver
 
     public override void Deduct(int value)
     {
-        shipCtrl.Ship_Health.Deduct(value);
+        shipCtrl.Ship_Shield.Deduct(value);
+        if (!checkIsShieldEnble())
+        {
+            shipCtrl.Ship_Health.Deduct(value);
+        }
     }
 
     public override void Add(int value)
     {
         shipCtrl.Ship_Health.Add(value);
-        if (!checkIsShieldEnble())
-        {
-            shipCtrl.Ship_Health.Deduct(value);
-        }
     }
 
     protected bool checkIsShieldEnble()
@@ -50,9 +50,10 @@ public class ShipDamageReceiver : DamageReceiver
         return shipCtrl.Ship_Shield.Is_ShieldActive;
     }
 
-
     protected override void Ondead()
     {
         throw new System.NotImplementedException();
     }
+
 }
+

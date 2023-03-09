@@ -15,16 +15,18 @@ public class ShipCtrl : HaoMonoBehaviour
         this.LoadShipHealth();
         this.LoadShipShield();
     }
+
     protected virtual void LoadShipHealth()
     {
         if (shipHealth != null) return;
         shipHealth = this.transform.GetComponentInChildren<ShipHealth>();
         Debug.Log(transform.name + "LoadShipHealth");
-    }   
+    }
     protected virtual void LoadShipShield()
     {
         if (shipShield != null) return;
         shipShield = this.transform.GetComponentInChildren<ShipShield>();
-        Debug.Log(transform.name + "LoadShipShield");
+        Debug.Log(transform.name + "Ship_Shield");
+
     }
 }
