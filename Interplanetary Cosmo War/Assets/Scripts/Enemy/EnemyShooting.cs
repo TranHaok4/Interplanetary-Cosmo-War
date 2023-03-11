@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyShooting : HaoMonoBehaviour
 {
-    [SerializeField] protected EnemyBulletEnum enemyName;
+    [SerializeField] protected EnemyBulletEnum bulletEnemyName;
 
     [SerializeField] protected float shootDelay;
     [SerializeField] protected float shootTimer;
@@ -40,7 +40,7 @@ public class EnemyShooting : HaoMonoBehaviour
         shootTimer += Time.fixedDeltaTime;
         if (shootTimer < shootDelay) return;
         shootTimer = 0f;
-        _shootingStrategy.Shoot(enemyName.ToString(), gunPos, this.transform.parent, typeShoot);
+        _shootingStrategy.Shoot(bulletEnemyName.ToString(), gunPos, this.transform.parent, typeShoot);
 
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : Spawner
+public class EnemySpawnerbyStage : Spawner
 {
     [SerializeField] List<StageConfigSO> stageConfigs;
 
@@ -54,7 +54,7 @@ public class EnemySpawner : Spawner
             Transform new_enemy = Spawn(waveconfig.Enemy_Prefabs, spawnpos, this_rotation);
             new_enemy.gameObject.SetActive(true);
 
-            new_enemy.GetComponentInChildren<EnemyPathing>().Set_WaveConfig(waveconfig);
+            new_enemy.GetComponentInChildren<EnemyBehaviourCtrl>().GetComponentInChildren<EnemyPathingBehaviour>().Set_WaveConfig(waveconfig);
 
             yield return new WaitForSeconds(waveconfig.Time_Between_Spawn);
 

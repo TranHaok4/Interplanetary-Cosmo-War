@@ -2,30 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPathing : HaoMonoBehaviour
+public class EnemyPathingBehaviour : IEnemyBehaviour
 {
+    [SerializeField] protected EnemyBehaviourCtrl enemyBehaviourCtrl;
+
     [SerializeField] protected WaveConfigSO waveConfig;
     [SerializeField] protected List<Transform> waypoints;
-    [SerializeField] protected EnemyCtrl enemyCtrl;
     protected int waypoint_Index = 0;
 
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadEnemyCtrl();
+        this.LoadEnemyBehaviourCtrl();
 
     }
-    protected void LoadEnemyCtrl()
+    protected void LoadEnemyBehaviourCtrl()
     {
-        if (enemyCtrl != null) return;
-        enemyCtrl = transform.parent.GetComponent<EnemyCtrl>();
+        if (enemyBehaviourCtrl != null) return;
+        enemyBehaviourCtrl = transform.parent.GetComponent<EnemyBehaviourCtrl>();
     }
     protected void GetWayPoint()
     {
         waypoints = waveConfig.Get_WayPoints();
     }
-    private void Update()
+    public override void InvokeBehavior()
     {
         MovefollowPath();
     }
@@ -38,6 +39,11 @@ public class EnemyPathing : HaoMonoBehaviour
     }
     protected void MovefollowPath()
     {
+        if(waveConfig==null)
+        {
+            Debug.LogWarning("enemy nay chi duoc spawn tu stage ahahha");
+            return;
+        }
         if(waypoint_Index<waypoints.Count)
         {
             var target_position = waypoints[waypoint_Index].transform.position;
@@ -48,7 +54,7 @@ public class EnemyPathing : HaoMonoBehaviour
                 waypoint_Index++;
                 if(waypoint_Index>=waypoints.Count)
                 {
-                    this.enemyCtrl.Enemy_Despawn.DespawnObject();
+                    this.enemyBehaviourCtrl.Enemy_Ctrl.Enemy_Despawn.DespawnObject();
                 }
             }
         }

@@ -5,16 +5,25 @@ using UnityEngine;
 
 public class ParentFly : HaoMonoBehaviour
 {
-    [SerializeField] protected int moveSpeed = 5;
-    [SerializeField] protected Vector3 direction = Vector3.up;
+    [SerializeField] IBulletStrategyFly bulletflyStrategy;
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadBulletFlyStrategy();
+    }
+    protected void LoadBulletFlyStrategy()
+    {
+        if (bulletflyStrategy != null) return;
+
+        bulletflyStrategy = GetComponentInChildren<IBulletStrategyFly>();
+        Debug.Log(transform.name + ":LoadBulletFlyStrategy");
+    }
+
 
     protected void Update()
     {
-        Fly();
+        bulletflyStrategy.Fly(transform.parent);
     }
 
-    private void Fly()
-    {
-        transform.parent.Translate(this.direction * this.moveSpeed * Time.deltaTime);
-    }
 }

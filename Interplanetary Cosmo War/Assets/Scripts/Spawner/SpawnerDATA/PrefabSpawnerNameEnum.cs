@@ -7,7 +7,8 @@ public enum EnemyEnum
     FirerRedFighter,
     Firerredtorpedo,
     FirerScout,
-    FirerBomber,
+    FireRedBoomber,
+
 
 }
 
@@ -16,6 +17,8 @@ public enum EnemyBulletEnum
     FireRedFighterBullet,
     FireRedTorpedoBullet,
     FireRedScoutBullet,
+    FireRedGuardEliteBullet,
+
 }
 public enum PlayerBulletEnum
 {

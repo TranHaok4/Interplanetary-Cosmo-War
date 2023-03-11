@@ -7,7 +7,7 @@ public abstract class HaoMonoBehaviour : MonoBehaviour
 {
     protected virtual void OnEnable()
     {
-        //todo
+        this.LoadComponents();
     }
     protected virtual void Start()
     {
