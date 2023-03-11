@@ -6,10 +6,7 @@ public class EnemyDespawn : DespawnByDistance
 {
     [SerializeField] protected Spawner enemySpawner;
 
-    protected override void LoadCamera()
-    {
-        base.LoadCamera();
-    }
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -18,7 +15,7 @@ public class EnemyDespawn : DespawnByDistance
     protected void LoadEnemySpawner()
     {
         if (enemySpawner != null) return;
-        enemySpawner = transform.parent.parent.parent.GetComponent<Spawner>();
+        enemySpawner = transform.parent?.parent?.parent?.GetComponent<Spawner>();
         Debug.Log(transform.name + ":LoadSpawner");
 
 
@@ -26,6 +23,5 @@ public class EnemyDespawn : DespawnByDistance
     public override void DespawnObject()
     {
         enemySpawner.Despawn(this.transform.parent);
-
     }
 }

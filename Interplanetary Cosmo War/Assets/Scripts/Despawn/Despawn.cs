@@ -17,7 +17,7 @@ public abstract class Despawn : HaoMonoBehaviour
 
     public virtual void DespawnObject()
     {
-        Destroy(transform.parent.gameObject);
+        Destroy(transform.parent?.parent?.gameObject);
     }
 
     protected abstract bool CanDespawn();

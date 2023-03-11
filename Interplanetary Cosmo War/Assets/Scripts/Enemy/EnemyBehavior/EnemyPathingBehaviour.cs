@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyPathingBehaviour : IEnemyBehaviour
 {
-    [SerializeField] protected EnemyBehaviourCtrl enemyBehaviourCtrl;
-
     [SerializeField] protected WaveConfigSO waveConfig;
     [SerializeField] protected List<Transform> waypoints;
     protected int waypoint_Index = 0;
@@ -14,13 +12,7 @@ public class EnemyPathingBehaviour : IEnemyBehaviour
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadEnemyBehaviourCtrl();
 
-    }
-    protected void LoadEnemyBehaviourCtrl()
-    {
-        if (enemyBehaviourCtrl != null) return;
-        enemyBehaviourCtrl = transform.parent.GetComponent<EnemyBehaviourCtrl>();
     }
     protected void GetWayPoint()
     {
@@ -48,7 +40,7 @@ public class EnemyPathingBehaviour : IEnemyBehaviour
         {
             var target_position = waypoints[waypoint_Index].transform.position;
             float movement_thisframe = waveConfig.Move_Speed * Time.deltaTime;
-            transform.parent.position = Vector2.MoveTowards(transform.parent.position, target_position, movement_thisframe);
+            enemyBehaviourCtrl.Enemy_Ctrl.transform.position = Vector2.MoveTowards(enemyBehaviourCtrl.Enemy_Ctrl.transform.position, target_position, movement_thisframe);
             if(transform.position==target_position)
             {
                 waypoint_Index++;
