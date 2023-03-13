@@ -5,19 +5,18 @@ using UnityEngine;
 
 public class BurstShooting : ShootingStrategy
 {
+    [SerializeField] protected int numberBurstBullet = 3;
     [SerializeField] private float delayBurst = 0.05f;
 
-    public override void Shoot(string bulletPrefabName, GunPosition gunPos, Transform shooterTransform, TypeShootSO typeshoot)
+    public override void Shoot(string bulletPrefabName, GunPosition gunPos, Transform shooterTransform)
     {
-        BurstShootingSO new_typeshoot = (BurstShootingSO)typeshoot;
-        StartCoroutine(BurstCoroutine(bulletPrefabName, gunPos, shooterTransform, new_typeshoot));
+        StartCoroutine(BurstCoroutine(bulletPrefabName, gunPos, shooterTransform));
     }
 
-    IEnumerator BurstCoroutine(string bulletPrefabName, GunPosition gunPos, Transform shooterTransform, BurstShootingSO typeshoot)
+    IEnumerator BurstCoroutine(string bulletPrefabName, GunPosition gunPos, Transform shooterTransform)
     {
-        int numBurst = typeshoot.Number_BurstBullet;
 
-        while (numBurst > 0)
+        while (numberBurstBullet > 0)
         {
             // Wait for the burst delay
             yield return new WaitForSeconds(delayBurst);
@@ -34,7 +33,7 @@ public class BurstShooting : ShootingStrategy
                 bulletCtrl.SetShooter(shooterTransform);
                 new_bullet.gameObject.SetActive(true);
             }
-            numBurst--;
+            numberBurstBullet--;
         }
         
     }

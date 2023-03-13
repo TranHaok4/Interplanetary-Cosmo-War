@@ -27,10 +27,11 @@ public abstract class Shield : HaoMonoBehaviour
     protected override void OnEnable()
     {
         base.OnEnable();
-        if(Is_ShieldActive)
+        if (Is_ShieldActive)
         {
             model.gameObject.SetActive(true);
         }
+        else model.gameObject.SetActive(false);
     }
 
     public virtual void Add(int value)
@@ -51,7 +52,12 @@ public abstract class Shield : HaoMonoBehaviour
             model.gameObject.SetActive(false);
         }
     }
-
+    public virtual void RecreateShield()
+    {
+        is_shieldActive = true;
+        shieldvalue = max_value;
+        model.gameObject.SetActive(true);
+    }
     protected virtual void Update()
     {
     }

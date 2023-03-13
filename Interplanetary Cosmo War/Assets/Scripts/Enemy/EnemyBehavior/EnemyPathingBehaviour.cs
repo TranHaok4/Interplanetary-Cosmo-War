@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyPathingBehaviour : IEnemyBehaviour
 {
+    [SerializeField] protected bool is_RepeatPathing;
+    [SerializeField] protected int startIndexPoint;
+
     [SerializeField] protected WaveConfigSO waveConfig;
     [SerializeField] protected List<Transform> waypoints;
     protected int waypoint_Index = 0;
@@ -46,7 +49,11 @@ public class EnemyPathingBehaviour : IEnemyBehaviour
                 waypoint_Index++;
                 if(waypoint_Index>=waypoints.Count)
                 {
-                    this.enemyBehaviourCtrl.Enemy_Ctrl.Enemy_Despawn.DespawnObject();
+                    if (is_RepeatPathing)
+                    {
+                        waypoint_Index = startIndexPoint;
+                    }
+                    else { this.enemyBehaviourCtrl.Enemy_Ctrl.Enemy_Despawn.DespawnObject(); }
                 }
             }
         }

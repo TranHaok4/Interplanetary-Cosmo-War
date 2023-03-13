@@ -12,13 +12,12 @@ public class EnemyShooting : HaoMonoBehaviour
 
     [SerializeField] protected GunPosition gunPos;
 
-    [SerializeField] protected ShootingType shootingType;
     [SerializeField] protected ShootingStrategy _shootingStrategy;
-    [SerializeField] protected TypeShootSO typeShoot;
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadGunPos();
+        this.LoadShootingStrategy();
     }
     protected virtual void LoadGunPos()
     {
@@ -29,6 +28,16 @@ public class EnemyShooting : HaoMonoBehaviour
         gunPos = this.GetComponentInChildren<GunPosition>();
         Debug.Log(transform.name + ":LoadGunPos");
     }
+    protected virtual void LoadShootingStrategy()
+    {
+        if (_shootingStrategy != null)
+        {
+            return;
+        }
+        _shootingStrategy = this.GetComponentInChildren<ShootingStrategy>();
+        Debug.Log(transform.name + ":LoadShootingStrategy");
+    }
+
 
     private void FixedUpdate()
     {
@@ -40,7 +49,7 @@ public class EnemyShooting : HaoMonoBehaviour
         shootTimer += Time.fixedDeltaTime;
         if (shootTimer < shootDelay) return;
         shootTimer = 0f;
-        _shootingStrategy.Shoot(bulletEnemyName.ToString(), gunPos, this.transform.parent, typeShoot);
+        _shootingStrategy.Shoot(bulletEnemyName.ToString(), gunPos, this.transform.parent);
 
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NormalShooting :ShootingStrategy
 {
-    public override  void  Shoot(string bulletPrefabName, GunPosition gunPos, Transform shooterTransform, TypeShootSO typeshoot)
+    public override  void  Shoot(string bulletPrefabName, GunPosition gunPos, Transform shooterTransform)
     {
         for (int index = 0; index < gunPos.GetSizePos(); index++)
         {

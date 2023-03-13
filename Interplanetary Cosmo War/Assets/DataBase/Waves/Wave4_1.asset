@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d97bd1b0f0910004bb46ea11ccabd143, type: 3}
-  m_Name: BurstShootSO
+  m_Script: {fileID: 11500000, guid: 17cac37ba5f075f408fb9be46db7b0ea, type: 3}
+  m_Name: Wave4_1
   m_EditorClassIdentifier: 
-  number_burstBullet: 3
+  enemy_prefabs: 4
+  path_prefab: {fileID: 2938920502360542031, guid: 27f3ae891d5cb124384d843b90d42232, type: 3}
+  time_between_Spawn: 5
+  number_of_Enemy: 1
+  move_Speed: 2

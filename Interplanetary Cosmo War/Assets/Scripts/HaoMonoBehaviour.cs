@@ -11,8 +11,8 @@ public abstract class HaoMonoBehaviour : MonoBehaviour
     }
     protected virtual void Start()
     {
-        //todo
-       
+        this.LoadComponents();
+
     }
     protected virtual void Reset()
     {
